@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyButtons extends StatelessWidget {
   final String? text;
@@ -9,7 +10,10 @@ class MyButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Text(text!),
+      child: Text(
+        text!,
+        style: GoogleFonts.lato(),
+      ),
     );
   }
 }

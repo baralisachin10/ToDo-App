@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_list/widgets/myButtons.dart';
 
 class DialogBox extends StatelessWidget {
-  const DialogBox({super.key});
+  final controller;
+  VoidCallback onSave;
+  VoidCallback onCancel;
+
+  DialogBox(
+      {super.key,
+      @required this.controller,
+      required this.onSave,
+      required this.onCancel});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.red.shade200,
+      backgroundColor: Colors.indigo.shade200,
       content: SizedBox(
         height: 130,
         width: 400,
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           //text field for user input
-          const TextField(
-            style: TextStyle(color: Colors.white),
+          TextField(
+            controller: controller,
+            style: GoogleFonts.lato(color: Colors.white),
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: "Add a new task!",
-              hintStyle: TextStyle(color: Colors.white),
+              hintStyle: GoogleFonts.lato(color: Colors.white),
             ),
           ),
 
@@ -30,13 +40,13 @@ class DialogBox extends StatelessWidget {
               // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // save button
-                MyButtons(text: "Save", onPressed: () {}),
+                MyButtons(text: "Save", onPressed: onSave),
 
                 const SizedBox(
                   width: 10,
                 ),
                 //cancel button
-                MyButtons(text: "Cancel", onPressed: (() {}))
+                MyButtons(text: "Cancel", onPressed: onCancel)
               ],
             ),
           ),
