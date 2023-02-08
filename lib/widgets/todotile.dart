@@ -32,7 +32,16 @@ class TodoTile extends StatelessWidget {
             activeColor: Colors.black,
           ),
           //text title
-          Text(taskName!),
+          Text(
+            taskName!,
+            style: TextStyle(
+              decoration: taskCompleted!
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none,
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
         ],
       ),
     );
